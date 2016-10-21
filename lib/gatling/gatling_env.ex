@@ -18,6 +18,7 @@ defmodule Gatling.Env do
       nginx_dir
       nginx_enabled_path
       nginx_template
+      nginx_config
       project
       release_config_path
       releases

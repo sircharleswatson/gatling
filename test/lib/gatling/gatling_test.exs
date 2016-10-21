@@ -36,6 +36,7 @@ defmodule GatlingTest do
     assert env.domains                 == domains
     assert env.script_template         == Gatling.Utilities.script_template(project_name: "sample_project", port: 4001)
     assert env.nginx_template          == Gatling.Utilities.nginx_template(domains: domains, port: 4001)
+    assert env.nginx_config            == Gatling.Utilities.nginx_config("sample_project")
     assert env.available_tasks         == Gatling.Utilities.mix_tasks("sample_project")
     assert env.version                 == "0.0.1470406670"
     assert env.deploy_callback_module  == SampleProject.DeployCallbacks # test/sample_project/deploy.ex

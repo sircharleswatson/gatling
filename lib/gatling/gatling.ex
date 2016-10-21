@@ -28,6 +28,7 @@ defmodule Gatling do
       :nginx_dir               => nginx_dir,
       :nginx_enabled_path      => nginx_enabled_path(project),
       :nginx_template          => nginx_template(domains: domains, port: port),
+      :nginx_config            => nginx_config(project),
       :project                 => project,
       :releases                => releases(project),
       :release_config_path     => release_config_path(project),

@@ -18,6 +18,7 @@
  etc_path: "/root/etc/init.d/sample_project",
  git_hook_path: "/root/home/ubuntu/sample_project/.git/hooks/post-update",
  nginx_available_path: "/root/etc/nginx/sites-available/sample_project",
+ nginx_config: "server {\n  listen 80;\n  server_name example.com;\n}\n",
  nginx_dir: "/root/etc/nginx",
  nginx_enabled_path: "/root/etc/nginx/sites-enabled/sample_project",
  nginx_template: "server {\n  listen 80;\n  server_name www.example.com sample_project.hashrocket.com api.example.com;\n\n  location / {\n    proxy_set_header X-Real-IP $remote_addr;\n    proxy_set_header X-Forwarded-For $proxy_add_x_forwarded_for;\n    proxy_set_header Host $http_host;\n    proxy_redirect off;\n    proxy_pass http://localhost:4001;\n    proxy_set_header Upgrade $http_upgrade;\n    proxy_set_header Connection \"upgrade\";\n  }\n\n}\n",
