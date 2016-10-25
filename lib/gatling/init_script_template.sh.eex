@@ -10,7 +10,9 @@
 ### END INIT INFO
 
 export MIX_ENV=prod
-export PORT=<%= @port %>
+<% if @port do %>
+  export PORT=<%= @port %>
+<% end %>
 export HOME=<%= System.user_home %>/deployments/<%= @project_name %>
 
 <%= System.user_home %>/deployments/<%=@project_name%>/bin/<%=@project_name%> "$1" "$2"

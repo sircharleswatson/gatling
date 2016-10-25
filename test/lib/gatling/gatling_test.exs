@@ -21,6 +21,12 @@ defmodule GatlingTest do
     assert(Regex.match?(regex, to_string(string)), "#{string} \n|doesn't match|\n#{assertion}")
   end
 
+  def no_matches?(string, assertion) do
+    regex = ~r/#{assertion}/
+    refute(Regex.match?(regex, to_string(string)), "#{string} \n|shouldn't match|\n#{assertion}")
+  end
+
+
   test ".env" do
     domains = Gatling.Utilities.domains("sample_project")
     env = Gatling.env("sample_project", port: 4001)
@@ -57,6 +63,11 @@ defmodule GatlingTest do
     env.upgrade_dir          |>  matches?("/root/home/ubuntu/deployments/sample_project/releases/0.0.1470406670")
     env.upgrade_path         |>  matches?("/root/home/ubuntu/deployments/sample_project/releases/0.0.1470406670/sample_project.tar.gz")
 
+  end
+
+  test ".env.init_script does not set PORT when port not passed in" do
+    env = Gatling.env("sample_project", port: nil)
+    no_matches?(env.script_template, "PORT")
   end
 
 end

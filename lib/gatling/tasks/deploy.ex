@@ -144,7 +144,7 @@ defmodule Mix.Tasks.Gatling.Deploy do
 
   @spec configure_nginx(gatling_env) :: gatling_env
   @doc """
-  Create an nginx.cong file to configure a reverse proxy to the 
+  Create an nginx.cong file to configure a reverse proxy to the
   deploying application. Install the file in:
 
   `/etc/nginx/sites-available/<project>`
