@@ -118,7 +118,13 @@ defmodule Gatling.Utilities do
       path
       |> File.ls!()
       |> Enum.filter(fn item -> File.dir?(Path.join(path, item)) end)
-      |> Enum.sort
+      |> Enum.sort(fn (a, b) ->
+           case Version.compare(a, b) do
+             :gt -> false
+             :lt -> true
+             :eq -> true
+           end
+         end)
     else
       []
     end
